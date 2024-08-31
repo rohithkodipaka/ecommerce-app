@@ -6,6 +6,8 @@ import com.rohith.ecommerce.kafka.OrderConfirmation;
 import com.rohith.ecommerce.kafka.OrderProducer;
 import com.rohith.ecommerce.orderline.OrderLineRequest;
 import com.rohith.ecommerce.orderline.OrderLineService;
+import com.rohith.ecommerce.payment.PaymentClient;
+import com.rohith.ecommerce.payment.PaymentRequest;
 import com.rohith.ecommerce.product.ProductClient;
 import com.rohith.ecommerce.product.PurchaseRequest;
 import jakarta.persistence.EntityNotFoundException;
@@ -31,6 +33,8 @@ public class OrderService {
 
     private final OrderProducer orderProducer;
 
+    private final PaymentClient paymentClient;
+
     public Integer createOrder(OrderRequest request) {
             //check the customer --> OpenFeign
             var customer = this.customerClient.findCustomerById(request.customerId())
@@ -55,6 +59,14 @@ public class OrderService {
             }
 
             //todo start payment process
+            var paymentRequest = new PaymentRequest(
+                    request.amount(),
+                    request.paymentMethod(),
+                    order.getId(),
+                    order.getReference(),
+                    customer
+            );
+            paymentClient.requestOrderPayment(paymentRequest);
 
             //todo send the order confirmation -- notification-ms(kafka)
             orderProducer.sendOrderConfirmation(new OrderConfirmation(
