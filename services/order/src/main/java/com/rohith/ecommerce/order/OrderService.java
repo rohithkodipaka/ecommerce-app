@@ -58,7 +58,7 @@ public class OrderService {
                 );
             }
 
-            //todo start payment process
+            // start payment process
             var paymentRequest = new PaymentRequest(
                     request.amount(),
                     request.paymentMethod(),
@@ -68,7 +68,7 @@ public class OrderService {
             );
             paymentClient.requestOrderPayment(paymentRequest);
 
-            //todo send the order confirmation -- notification-ms(kafka)
+            // send the order confirmation -- notification-ms(kafka)
             orderProducer.sendOrderConfirmation(new OrderConfirmation(
                     request.reference(),
                     request.amount(),
