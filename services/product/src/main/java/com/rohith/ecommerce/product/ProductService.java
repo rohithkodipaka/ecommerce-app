@@ -5,6 +5,10 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.rohith.ecommerce.product.PurchaseProductRequest;
+import com.rohith.ecommerce.product.ProductPurchaseResponse;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,17 +27,18 @@ public class ProductService {
         return productRepository.save(product).getId();
     }
 
+    @Transactional(rollbackFor = ProductPurchaseException.class)
     public List<ProductPurchaseResponse> purchaseProducts(List<PurchaseProductRequest> request) {
         var productIds = request
                 .stream()
-                .map(PurchaseProductRequest::id)
+                .map(PurchaseProductRequest::productId)
                 .toList();
         var storedProducts = productRepository.findAllByIdInOrderById(productIds);
         if(productIds.size() != storedProducts.size()){
             throw new ProductPurchaseException("One or more products doesn't exist");
         }
         var storedRequest = request.stream()
-                .sorted(Comparator.comparing(PurchaseProductRequest::id))
+                .sorted(Comparator.comparing(PurchaseProductRequest::productId))
                 .toList();
         var purchasedProducts = new ArrayList<ProductPurchaseResponse>();
         for(int i=0;i<storedProducts.size();i++){
