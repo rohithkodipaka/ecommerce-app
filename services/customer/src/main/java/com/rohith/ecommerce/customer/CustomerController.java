@@ -14,21 +14,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    @Autowired
     private final CustomerService customerService;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<String> createCustomer(@RequestBody @Valid CustomerRequest request){
         return ResponseEntity.ok(customerService.createCustomer(request));
     }
 
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<Void> updateCustomer(@RequestBody @Valid CustomerRequest request){
         customerService.updateCustomer(request);
         return ResponseEntity.accepted().build();
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<CustomerResponse>> findAll(){
         return ResponseEntity.ok(customerService.findAllCustomers());
     }
