@@ -144,8 +144,3 @@ ecommerce-app
 
 Contributions, issues, and feature requests are welcome!
 ⭐ If you like this project, don’t forget to star the repo.
-
----
-
-```
-```
