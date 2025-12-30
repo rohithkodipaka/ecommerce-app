@@ -1,15 +1,117 @@
-E-commerce Microservices Project using Spring Boot
+# 🛍️ E-commerce Microservices Application
 
-Business Requirements:
-----------------------
-As a business owner in the e-commerce sector, I am currently operating without the aid of any digital solutions.
-My product line consists of a variety of items, each identified by a unique code and accompanied by a detailed description.
+A **high-performance, scalable, and modular E-commerce platform** built using **Spring Boot** and **Microservices Architecture**, designed to support modern, distributed e-commerce systems with ease and reliability.
 
-Customers interact with my business by placing orders from this list of products.
-I identify my customers using their first name, last name, email and address.
-Each customer transaction involves a specific payment method.
-Upon the completion of a successful payment transaction, I take the responsibility to inform the customer via an email, confirming
-the success of their payment or conversely, notifying them of any payment failures.
+---
 
-In a bid to streamline operations and promote growth within my business, I am looking to invest in the development of a dedicated application.
-This application will serve to simplify my business processes and contribute significantly to the overall efficiency and scalability of my online venture.
+## 📌 Project Overview
+
+The **E-commerce Microservices Application** addresses real-world challenges faced by online businesses—such as product management, order handling, payment processing, and customer notifications—by breaking the system into **independently deployable microservices**.
+
+### 🔑 Key Features
+
+- 🛒 **Product Management**
+  - Create, update, and manage products with unique identifiers and inventory tracking.
+- 📦 **Order Processing**
+  - Complete order lifecycle from placement to fulfillment.
+- 💳 **Payment Handling**
+  - Payment validation, processing, and status notifications.
+- 📧 **Email Notifications**
+  - Automated emails for payment success and failure events.
+- 📈 **Scalable Design**
+  - Loosely coupled services enabling easy scaling and future enhancements.
+
+---
+
+## 🧱 System Architecture
+
+The application follows a **containerized microservices architecture**, orchestrated using **Docker Compose**, ensuring consistency across environments.
+
+### 🔹 Core Microservices
+
+| Service | Responsibility |
+|------|--------------|
+| **Product Service** | Manages product catalog and inventory |
+| **Customer Service** | Handles customer profiles and addresses |
+| **Order Service** | Processes and tracks customer orders |
+| **Payment Service** | Manages payments and triggers notifications |
+
+
+## 🛠️ Tech Stack
+
+### 🚀 Backend & Frameworks
+- **Java (Spring Boot)**
+  - Spring Data JPA & MongoDB
+  - Spring Security
+  - Spring Cloud (Microservices)
+
+### 🗄️ Databases
+- **PostgreSQL** – Relational data (customers, orders)
+- **MongoDB** – Non-relational & transactional data
+
+### ⚙️ Infrastructure & Messaging
+- **Docker & Docker Compose**
+- **Apache Kafka** – Event-driven communication
+- **Zookeeper** – Distributed coordination
+- **Zipkin** – Distributed tracing
+
+### 🧪 Testing
+- **JUnit**
+- **MockMvc**
+- Mocked integration tests
+
+---
+
+## 🚀 Deployment & Setup
+
+### ✅ Prerequisites
+- Docker
+- Docker Compose
+
+### ▶️ Run Locally
+
+git clone https://github.com/rohithkodipaka/ecommerce-app.git
+cd ecommerce-app
+docker-compose up
+
+### 🌐 Service Access
+
+| Service                 | URL               |
+| ----------------------- | ----------------- |
+| PostgreSQL              | `localhost:5432`  |
+| MongoDB                 | `localhost:27017` |
+| Kafka Broker            | `localhost:9092`  |
+| Zipkin UI               | `localhost:9411`  |
+| MailDev (Email Testing) | `localhost:1080`  |
+| PgAdmin                 | `localhost:5050`  |
+
+---
+
+## 🧩 Docker Services Overview
+
+* 🐘 **PostgreSQL** – Relational database
+* 🍃 **MongoDB** – NoSQL storage
+* 📨 **Apache Kafka** – Message broker
+* 🧭 **Zookeeper** – Kafka coordination
+* 🧪 **MailDev** – Email testing interface
+* 📊 **Zipkin** – Distributed tracing
+* 🧑‍💻 **PgAdmin** – PostgreSQL UI
+
+---
+
+## 🔮 Future Enhancements
+
+* 💳 Stripe / PayPal payment gateway integration
+* 📜 Event sourcing for audit trails
+* ☸️ Kubernetes deployment support
+* 🔁 CI/CD pipelines with GitHub Actions
+
+---
+
+## 👤 Author & Contact
+
+**Rohith Kodipaka**
+🔗 GitHub: [https://github.com/rohithkodipaka](https://github.com/rohithkodipaka)
+
+Contributions, issues, and feature requests are welcome!
+⭐ If you like this project, don’t forget to star the repo.
