@@ -36,6 +36,15 @@ The application follows a **containerized microservices architecture**, orchestr
 | **Order Service** | Processes and tracks customer orders |
 | **Payment Service** | Manages payments and triggers notifications |
 
+### 📊 Architecture Diagrams
+
+- 🔁 **Microservices Interaction Flow**  
+  👉 https://github.com/rohithkodipaka/ecommerce-app/blob/main/diagrams/microservices-flow.drawio
+
+- 🧩 **Entity Relationship Diagram (ERD)**  
+  👉 https://github.com/rohithkodipaka/ecommerce-app/blob/main/diagrams/entity-relationship.drawio
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -70,9 +79,11 @@ The application follows a **containerized microservices architecture**, orchestr
 
 ### ▶️ Run Locally
 
+```bash
 git clone https://github.com/rohithkodipaka/ecommerce-app.git
 cd ecommerce-app
 docker-compose up
+````
 
 ### 🌐 Service Access
 
@@ -99,6 +110,24 @@ docker-compose up
 
 ---
 
+## 📁 Repository Structure
+
+```plaintext
+ecommerce-app
+├── diagrams
+│   ├── microservices-flow.drawio
+│   ├── entity-relationship.drawio
+├── docker-compose.yml
+├── services
+│   ├── product-service
+│   ├── customer-service
+│   ├── order-service
+│   ├── payment-service
+└── README.md
+```
+
+---
+
 ## 🔮 Future Enhancements
 
 * 💳 Stripe / PayPal payment gateway integration
@@ -115,3 +144,8 @@ docker-compose up
 
 Contributions, issues, and feature requests are welcome!
 ⭐ If you like this project, don’t forget to star the repo.
+
+---
+
+```
+```
